@@ -45,4 +45,6 @@ app.get("/", async (request, response) => {
   });
 });
 
-app.listen(port);
+app.listen(port, () => {
+  console.log( `Listening on : http://localhost:${port}` );
+});
