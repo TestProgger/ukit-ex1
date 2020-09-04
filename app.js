@@ -20,10 +20,9 @@ app.get("/", async (request, response) => {
 
   if (!newFileName) {
     response.statusCode = 404;
-    response.send(
+    return response.send(
       `<h1>Error: filename is empty</h1> <p>Example: http://localhost:${port}/?filename=blablabla</p>`
     );
-    return;
   }
 
   response.cookie(
@@ -39,8 +38,7 @@ app.get("/", async (request, response) => {
   response.download(sourceFile, newFileName, (error) => {
     if (error) {
       response.statusCode = 404;
-      response.send("<h1>Resourse not found</h1>");
-      return;
+      return response.send("<h1>Resourse not found</h1>");
     }
   });
 });
